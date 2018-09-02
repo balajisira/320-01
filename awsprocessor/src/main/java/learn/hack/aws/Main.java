@@ -87,15 +87,33 @@ public class Main {
     }
     static void analyseEntities(Set<Entity> dataEntities ) {
         Set<String> names = new HashSet<>();
+        dataEntities
+//                .stream().filter(new Predicate<Entity>() {
+//            @Override
+//            public boolean test(Entity entity) {
+//                return entity.getType().equals(EntityType.PERSON.name());
+//            }
+//        })
+                .forEach(y-> {
+            System.out.println(">>>>>>>>>>>>>>>>>>>>\t"+y);
+            names.add(y.getText());
+        });
+        System.out.println("Number of persons : " + names.size());
+
+
+    }    static void analyseEntities_Person(Set<Entity> dataEntities ) {
+        Set<String> names = new HashSet<>();
         dataEntities.stream().filter(new Predicate<Entity>() {
             @Override
             public boolean test(Entity entity) {
                 return entity.getType().equals(EntityType.PERSON.name());
             }
         }).forEach(y-> {
-//            System.out.println("Person  : " +y.getText());
-            names.add(y.getText());});
+            System.out.println("Person  : " +y.getText());
+            names.add(y.getText());
+        });
         System.out.println("Number of persons : " + names.size());
+
 
     }
 
